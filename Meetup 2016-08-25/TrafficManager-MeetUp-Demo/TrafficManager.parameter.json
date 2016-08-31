@@ -1,0 +1,30 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uniqueDnsName": {
+            "value": "cwtrafficmgmt01"
+        },
+        "uniqueDnsNameForPublicIP": {
+            "value": "cwtrafficmgmt01"
+        },
+        "uniqueStorageAccountName": {
+            "value": "cwtmstorage01"
+        },
+        "adminUsername": {
+            "value": "chris"
+        },
+        "adminPassword": {
+            "value": "PWGenerat213!"
+        },
+        "VMNameADFS": {
+            "value": "VMCWADFS01"
+        },
+        "VMNameDC": {
+            "value": "VMCWDC01"
+        },
+        "domainPassword": {
+            "value": "PWGenerat213!"
+        }
+}
+}
