@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uniqueDnsName": {
+            "type": "string",
+            "metadata": {
+                "description": "Relative DNS name for the traffic manager profile, resulting FQDN will be <uniqueDnsName>.trafficmanager.net, must be globally unique."
+            }
+        },
+        "uniqueDnsNameForPublicIP": {
+            "type": "string",
+            "metadata": {
+                "description": "Relative DNS Name for the Public IPs used to access the Virtual Machines, must be globally unique.  An index will be appended for each instance."
+            }
+        }
+    },
+    "variables": {
+        "apiVersion": "2016-03-30",
+        "location": "WestEurope",
+        "publicIPAddressName": "[concat('PIP-',parameters('uniqueDnsNameForPublicIP'))]",
+        "publicIPAddressType": "Dynamic"
+    },
+    "resources": [
+        {
+            "apiVersion": "[variables('apiVersion')]",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('uniqueDnsNameForPublicIP')]"
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-04-28-preview",
+            "type": "Microsoft.Network/trafficManagerProfiles",
+            "name": "Endpoint",
+            "location": "global",
+            "properties": {
+                "profileStatus": "Enabled",
+                "trafficRoutingMethod": "Weighted",
+                "dnsConfig": {
+                    "relativeName": "[parameters('uniqueDnsName')]",
+                    "ttl": 30
+                },
+                "monitorConfig": {
+                    "protocol": "http",
+                    "port": 80,
+                    "path": "/"
+                },
+                "endpoints": [
+                    {
+                        "name": "CloudADFS",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                        "properties": {
+                            "target": "blog.atwork.at",
+                            "endpointStatus": "Enabled",
+                            "weight": 1
+                        }
+                    },
+                    {
+                        "name": "OnPremADFS",
+                        "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                        "properties": {
+                            "target": "partnerblog.at",
+                            "endpointStatus": "Enabled",
+                            "weight": 1
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
