@@ -167,6 +167,9 @@
             "type": "Microsoft.Network/networkInterfaces",
             "name": "[concat(parameters('nicNamePrefix'), parameters('vmNamePrefix'), copyindex())]",
             "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vNetName'))]"
+            ],
             "copy": {
                 "name": "nicLoop",
                 "count": "[variables('numberOfInstances')]"
