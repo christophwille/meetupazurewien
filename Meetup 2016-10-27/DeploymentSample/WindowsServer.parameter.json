@@ -14,7 +14,7 @@
             }
         },
         "vmNamePrefix": {
-            "value": "CWMeetUp01"
+            "value": "CWMeetUp"
         },
         "StorageAccountname": {
             "value": "cwteststorage02"
