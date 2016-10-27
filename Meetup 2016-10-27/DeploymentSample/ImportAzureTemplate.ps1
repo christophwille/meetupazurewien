@@ -8,9 +8,9 @@ if ($AzureSubscription -eq $null) {
     Add-AzureRmAccount
     $AzureSubscription = Get-AzureRMSubscription | Out-GridView -Title 'Select Azure Subscription' -OutputMode Single
     
-} else {
-    Select-AzureRMSubscription -SubscriptionId $AzureSubscription.SubscriptionId
-}
+} 
+Select-AzureRMSubscription -SubscriptionId $AzureSubscription.SubscriptionId
+
 
 $DeploymentName = (New-Guid).Guid
 $AzureResourceGroupName = 'CW-DSCTest-02'
