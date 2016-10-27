@@ -1,0 +1,114 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "Admin username"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Admin password"
+            }
+        },
+        "domainName": {
+            "type": "string",
+            "defaultValue": "test.com",
+            "metadata": {
+                "description": "Domainname to create"
+            }
+        },
+        "vmName": {
+            "type": "string",
+            "defaultValue": "CWTestDC",
+            "metadata": {
+                "description": "VMName to Create"
+            }
+        },
+        "DSCStorageAccountSasToken": {
+            "type": "string",
+            "metadata": {
+                "description": "DSC SAS Account Token to download DSC Configuration"
+            }
+        },
+        "dscModulesURL": {
+            "type": "string",
+            "metadata": {
+                "description": "URL to the DSC MOdule"
+            }
+        },
+        "dscConfigurationFunction": {
+            "type": "string",
+            "metadata": {
+                "description": "DSC Configuration Function to execute"
+            }
+        },
+        "dscScript": {
+            "type": "string",
+            "metadata": {
+                "description": "DSC Configuration Function to execute"
+            }
+        },
+        "FileDownloadURI": {
+            "type": "string",
+            "metadata": {
+                "description": "file path to download the installationsources"
+            }
+        },
+        "FileDownloadUriSASToken": {
+            "type": "string",
+            "metadata": {
+                "description": "sas token to download the installationsources"
+            }
+        },
+        "FileDownloadLocalUri": {
+            "type": "string",
+            "metadata": {
+                "description": "sas token to download the installationsources"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('vmName'), '/Microsoft.Powershell.DSC')]",
+            "apiVersion": "2015-05-01-preview",
+            "tags": {
+                "displayName": "DSCExtension"
+            },
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.19",
+                "autoUpgradeMinorVersion" : "true",
+                "settings": {
+                    "wmfVersion": "latest",
+                    "configuration": {
+                        "url": "[parameters('dscModulesURL')]",
+                        "script": "[parameters('dscScript')]",
+                        "function": "[parameters('dscConfigurationFunction')]"
+                    },
+                    "configurationArguments": {
+                        "domainName": "[parameters('domainName')]",
+                        "FileDownloadURI": "[concat(parameters('FileDownloadURI'),parameters('FileDownloadUriSASToken'))]",
+                        "FileDownloadLocalUri" : "[parameters('FileDownloadLocalUri')]"
+                    }
+                },
+                "protectedSettings": {
+                    "configurationUrlSasToken": "[parameters('DSCStorageAccountSasToken')]",
+                    "configurationArguments": {
+                        "adminCreds": {
+                            "userName": "[parameters('adminUsername')]",
+                            "password": "[parameters('adminPassword')]"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
