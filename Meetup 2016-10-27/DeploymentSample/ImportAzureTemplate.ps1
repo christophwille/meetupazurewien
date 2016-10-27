@@ -39,7 +39,8 @@ if ($TemplateConfigs -is [System.Array]) {
 New-AzureRMResourceGroupDeployment -Name $DeploymentName `
                                    -ResourceGroupName $AzureResourceGroupName `
                                    -TemplateFile $Template.FullName `
-                                   -TemplateParameterFile $TemplateConfig.FullName
+                                   -TemplateParameterFile $TemplateConfig.FullName `
+                                   -DeploymentDebugLogLevel All
                                    
 
 
