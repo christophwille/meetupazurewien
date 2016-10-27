@@ -13,11 +13,25 @@
                 "secretName": "VMAdminPassword"
             }
         },
+        "registrationKey": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/611d371e-a166-4762-99a1-fa42e3e47040/resourceGroups/CWAutomation01/providers/Microsoft.KeyVault/vaults/CWKeyVault01"
+                },
+                "secretName": "VMDSCRegistrationKey"
+            }
+        },
         "vmNamePrefix": {
             "value": "CWMeetUp"
         },
+        "nodeConfigurationName": {
+            "value": "CWMeetUp"
+        },
+        "timestamp": {
+            "value": "MM/dd/yyyy H:mm:ss tt"
+        },
         "StorageAccountname": {
-            "value": "cwteststorage02"
+            "value": "cwmeetup01"
         }
     }
 }
