@@ -4,6 +4,8 @@
         NodeName = '*';
         PSDscAllowPlainTextPassword = $True;
         PSDscAllowDomainUser = $True;
+        KeyVaultName = 'CWKeyVault01';
+        KeyvaultResourceGroup = 'CWAutomation01'
     }
     @{  
         NodeName = 'localhost' ;
@@ -11,7 +13,7 @@
         RetryCount = 10;
         RetryIntervalSec = 30;
         Role= @('DomainController','DHCP');
-        AdminCredName = 'TestDomAdmin'; #Name of Credential in automation account
+        AdminCredName = 'VMAdminPassword'; #Name of Credential in KeyVault
         Scopes = @(
                     @{
                         Name = 'Internal';

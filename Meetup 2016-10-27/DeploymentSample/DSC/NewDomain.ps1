@@ -29,15 +29,15 @@ configuration NewDomain
         xADDomain 'FirstDS'
         {
             DomainName = $Node.DomainName
-            DomainAdministratorCredential = Get-AutomationPSCredential -Name $Node.AdminCredName
-            SafemodeAdministratorPassword = Get-AutomationPSCredential -Name $Node.AdminCredName
+            DomainAdministratorCredential = (Get-AzureKeyVaultSecret -VaultName $Node.KeyVaultName -Name $Node.AdminCredName).SecretValue
+            SafemodeAdministratorPassword = (Get-AzureKeyVaultSecret -VaultName $Node.KeyVaultName -Name $Node.AdminCredName).SecretValue
             DependsOn = '[WindowsFeature]ADDSInstall'
 
         }
         xWaitForADDomain 'DscForestWait'
         {
             DomainName = $Node.DomainName
-            DomainUserCredential = Get-AutomationPSCredential -Name $Node.AdminCredName
+            DomainUserCredential = (Get-AzureKeyVaultSecret -VaultName $Node.KeyVaultName -Name $Node.AdminCredName).SecretValue
             RetryCount = $Node.RetryCount
             RetryIntervalSec = $Node.RetryIntervalSec
             DependsOn = '[xADDomain]FirstDS'
@@ -88,5 +88,5 @@ Add-AzureRmAccount
 $azAutoAccount = Get-AzureRmAutomationAccount | Out-GridView -Title 'Select Automation Account to Deploy Config to' -OutputMode Single
 $Automation = Get-ChildItem -Path $PSScriptRoot -Recurse -File | ? { $_.Extension -eq '.ps1' }
 
-Import-AzureRmAutomationDscConfiguration -SourcePath C:\Users\ChristophWilfing\Documents\GitHub\AzureSamples\AzureDSC\DomainController\NewDomain.ps1 -Published -Force -ResourceGroupName $azAutoAccount.ResourceGroupName -AutomationAccountName $azAutoAccount.AutomationAccountName -LogVerbose $true
+Import-AzureRmAutomationDscConfiguration -SourcePath Newdomain.ps1 -Published -Force -ResourceGroupName $azAutoAccount.ResourceGroupName -AutomationAccountName $azAutoAccount.AutomationAccountName -LogVerbose $true
 #>
