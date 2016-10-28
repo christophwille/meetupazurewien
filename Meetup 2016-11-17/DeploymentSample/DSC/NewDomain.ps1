@@ -1,7 +1,7 @@
 ﻿#requires -Version 5
 configuration NewDomain
 {
-
+<#
     param
     (
         [PSCredential]
@@ -9,13 +9,25 @@ configuration NewDomain
         [ValidateNotNullorEmpty()]
         $AdminCred
     )
-
+#>
 
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName xActiveDirectory
     Import-DscResource -ModuleName xPendingReboot
     Import-DscResource -ModuleName xDhcpServer
+    Import-Module -Name AzureRM.Profile
+    Import-Module -Name AzureRM.Resources
+    Import-Module -Name AzureRM.KeyVault
 
+# Get ServiceCredential and Connect to Keyvault
+    $servicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection';
+    Add-AzureRmAccount -ServicePrincipal `
+                       -TenantId $servicePrincipalConnection.TenantId `
+                       -ApplicationId $servicePrincipalConnection.ApplicationId `
+                       -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
+
+    $Key = Get-AzureKeyVaultSecret -VaultName 'CWKeyVault01' -Name 'VMAdminPassword'
+#    $AdminCred = Get-AzureRmAutomationCredential -Name 'JosefMaier' -ResourceGroupName 'CWAutomation01' -AutomationAccountName 'CWAutomation01';
 
 
     node ($AllNodes.Where{$_.Role -eq 'DomainController'}.NodeName )
@@ -29,29 +41,20 @@ configuration NewDomain
         xADDomain 'FirstDS'
         {
             DomainName = $Node.DomainName
-            DomainAdministratorCredential = $AdminCred
-            SafemodeAdministratorPassword = $AdminCred.Password
+            DomainAdministratorCredential = [pscredential]::new($Node.DomainName + '\' + $Key.Name,$Key.SecretValue)
+            SafemodeAdministratorPassword = [pscredential]::new($Node.DomainName + '\' + $Key.Name,$Key.SecretValue)
             DependsOn = '[WindowsFeature]ADDSInstall'
 
         }
         xWaitForADDomain 'DscForestWait'
         {
             DomainName = $Node.DomainName
-            DomainUserCredential = (Get-AzureKeyVaultSecret -VaultName $Node.KeyVaultName -Name $Node.AdminCredName).SecretValue
+            DomainUserCredential = [pscredential]::new($Node.DomainName + '\' + $Key.Name,$Key.SecretValue)
             RetryCount = $Node.RetryCount
             RetryIntervalSec = $Node.RetryIntervalSec
             DependsOn = '[xADDomain]FirstDS'
         }
-    }
 
-    node ($AllNodes.Where{$_.Role -eq 'DHCP'}.NodeName ) {
-        LocalConfigurationManager
-        {
-            ActionAfterReboot = 'ContinueConfiguration'
-            ConfigurationMode = 'ApplyAndAutoCorrect'
-            RebootNodeIfNeeded = $true
-        }
-        
         # Install DHCP Server
         WindowsFeature 'DHCP'
         {
@@ -88,5 +91,5 @@ Add-AzureRmAccount
 $azAutoAccount = Get-AzureRmAutomationAccount | Out-GridView -Title 'Select Automation Account to Deploy Config to' -OutputMode Single
 $Automation = Get-ChildItem -Path $PSScriptRoot -Recurse -File | ? { $_.Extension -eq '.ps1' }
 
-Import-AzureRmAutomationDscConfiguration -SourcePath Newdomain.ps1 -Published -Force -ResourceGroupName $azAutoAccount.ResourceGroupName -AutomationAccountName $azAutoAccount.AutomationAccountName -LogVerbose $true
+Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\Users\ChristophWilfing\Documents\GitHub\meetupazurewien\Meetup 2016-11-17\DeploymentSample\DSC\NewDomain.ps1' -Published -Force -ResourceGroupName $azAutoAccount.ResourceGroupName -AutomationAccountName $azAutoAccount.AutomationAccountName -LogVerbose $true
 #>
