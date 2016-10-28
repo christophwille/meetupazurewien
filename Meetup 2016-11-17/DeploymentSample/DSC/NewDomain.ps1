@@ -1,7 +1,7 @@
 ﻿#requires -Version 5
 configuration NewDomain
 {
-<#
+
     param
     (
         [PSCredential]
@@ -9,7 +9,7 @@ configuration NewDomain
         [ValidateNotNullorEmpty()]
         $AdminCred
     )
-#>
+
 
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName xActiveDirectory
@@ -29,8 +29,8 @@ configuration NewDomain
         xADDomain 'FirstDS'
         {
             DomainName = $Node.DomainName
-            DomainAdministratorCredential = (Get-AzureKeyVaultSecret -VaultName $Node.KeyVaultName -Name $Node.AdminCredName).SecretValue
-            SafemodeAdministratorPassword = (Get-AzureKeyVaultSecret -VaultName $Node.KeyVaultName -Name $Node.AdminCredName).SecretValue
+            DomainAdministratorCredential = $AdminCred
+            SafemodeAdministratorPassword = $AdminCred.Password
             DependsOn = '[WindowsFeature]ADDSInstall'
 
         }
