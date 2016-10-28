@@ -404,7 +404,8 @@
                 "autoUpgradeMinorVersion": true,
                 "protectedSettings": {
                     "Items": {
-                        "registrationKeyPrivate": "[parameters('registrationKey')]"
+                        "registrationKeyPrivate": "[parameters('registrationKey')]",
+                        "AdminPasswordPrivate" : "[parameters('adminPassword')]"
                     }
                 },
                 "settings": {
@@ -417,6 +418,14 @@
                             "Value": {
                                 "UserName": "PLACEHOLDER_DONOTUSE",
                                 "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                            },
+                            "TypeName": "System.Management.Automation.PSCredential"
+                        },
+                        {
+                            "Name": "AdminCred",
+                            "Value": {
+                                "UserName": "[parameters('adminUsername')]",
+                                "Password": "PrivateSettingsRef:AdminPasswordPrivate"
                             },
                             "TypeName": "System.Management.Automation.PSCredential"
                         },
