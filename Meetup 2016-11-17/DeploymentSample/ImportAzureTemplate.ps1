@@ -17,7 +17,7 @@ $AzureResourceGroupName = 'CW-DSCTest-02'
 $AzureLocation = 'West Europe'
 
 
-New-AzureRmResourceGroup -Name $AzureResourceGroupName -Location $AzureLocation
+New-AzureRmResourceGroup -Name $AzureResourceGroupName -Location $AzureLocation -Force
 
 #Find templates in current directory
 $Templates = Get-ChildItem -Path $PSScriptRoot -Recurse -File | ? { ($_.Extension -eq '.json') -and ($_.Name -NotLike '*parameter*') }
@@ -40,8 +40,9 @@ New-AzureRMResourceGroupDeployment -Name $DeploymentName `
                                    -ResourceGroupName $AzureResourceGroupName `
                                    -TemplateFile $Template.FullName `
                                    -TemplateParameterFile $TemplateConfig.FullName `
-                                   -DeploymentDebugLogLevel All
-                                   
+                                   -DeploymentDebugLogLevel All `
+                                   -Verbose `
+                                   -Force
 
 
 #Get-AzureRmResourceGroup -Name $AzureResourceGroupName | Remove-AzureRmResourceGroup

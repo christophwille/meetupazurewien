@@ -210,6 +210,28 @@
             "metadata": {
                 "description": "The current datetime, as a string, to force the request to go through ARM even if all fields are the same as last ARM deployment of this template; example in parameters file is in MM/dd/yyyy H:mm:ss tt format"
             }
+        },
+        "TagType": {
+            "type": "string",
+            "allowedValues": [
+                "TEST",
+                "DEV",
+                "PROD"
+            ],
+            "metadata": {
+                "description": "Type of deployment [TEST|DEV|PROD]"
+            }
+        },
+        "TagOwner": {
+            "type": "string",
+            "allowedValues": [
+                "CW",
+                "CL",
+                "TP"
+            ],
+            "metadata": {
+                "description": "Owner of deployment"
+            }
         }
     },
     "variables": {
@@ -235,6 +257,10 @@
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "name": "[variables('storageAccountName')]",
             "apiVersion": "2015-05-01-preview",
             "location": "[resourceGroup().location]",
@@ -246,6 +272,10 @@
             "type": "Microsoft.Compute/availabilitySets",
             "name": "[variables('availabilitySetName')]",
             "apiVersion": "2015-06-15",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "location": "[resourceGroup().location]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -257,6 +287,10 @@
             "type": "Microsoft.Network/networkInterfaces",
             "name": "[concat(parameters('nicNamePrefix'), parameters('vmNamePrefix'), copyindex())]",
             "location": "[resourceGroup().location]",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', variables('vNetName'))]"
             ],
@@ -282,6 +316,10 @@
             "apiVersion": "2015-06-15",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[concat(parameters('vmNamePrefix'), copyindex())]",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "copy": {
                 "name": "virtualMachineLoop",
                 "count": "[variables('numberOfInstances')]"
@@ -339,6 +377,10 @@
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(parameters('vmNamePrefix'), copyindex(),'/IaaSAntimalware')]",
             "apiVersion": "2015-05-01-preview",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "copy": {
                 "name": "dscIaaSAntimalwareExtensionLoop",
                 "count": "[variables('numberOfInstances')]"
@@ -368,6 +410,10 @@
             "apiVersion": "2015-06-15",
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[variables('vNetName')]",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressSpace": {
@@ -389,6 +435,10 @@
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(parameters('vmNamePrefix'),copyindex(),'/Microsoft.Powershell.DSC')]",
             "apiVersion": "2015-06-15",
+            "tags": {
+                "type": "[parameters('TagType')]",
+                "owner": "[parameters('TagOwner')]"
+            },
             "copy": {
                 "name": "dscExtensionLoop",
                 "count": "[variables('numberOfInstances')]"
@@ -405,7 +455,7 @@
                 "protectedSettings": {
                     "Items": {
                         "registrationKeyPrivate": "[parameters('registrationKey')]",
-                        "AdminPasswordPrivate" : "[parameters('adminPassword')]"
+                        "AdminPasswordPrivate": "[parameters('adminPassword')]"
                     }
                 },
                 "settings": {

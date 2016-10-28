@@ -28,10 +28,19 @@
             "value": "CWMeetUp"
         },
         "timestamp": {
-            "value": "MM/dd/yyyy H:mm:ss tt"
+            "value": "asdf"
         },
         "StorageAccountname": {
             "value": "cwmeetup01"
+        },
+        "modulesUrl": {
+            "value": "https://raw.githubusercontent.com/chwilfing/meetupazurewien/master/Meetup%202016-11-17/DeploymentSample/DSC/UpdateLCMforAAPull.zip"
+        },
+        "TagType": {
+            "value": "TEST"
+        },
+        "TagOwner": {
+            "value": "CW"
         }
     }
 }
