@@ -472,14 +472,6 @@
                             "TypeName": "System.Management.Automation.PSCredential"
                         },
                         {
-                            "Name": "AdminCred",
-                            "Value": {
-                                "UserName": "[parameters('adminUsername')]",
-                                "Password": "PrivateSettingsRef:AdminPasswordPrivate"
-                            },
-                            "TypeName": "System.Management.Automation.PSCredential"
-                        },
-                        {
                             "Name": "RegistrationUrl",
                             "Value": "[parameters('registrationUrl')]",
                             "TypeName": "System.String"
