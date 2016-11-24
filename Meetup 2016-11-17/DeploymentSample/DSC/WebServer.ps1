@@ -2,6 +2,7 @@
 {
     Import-DscResource –ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName xWebAdministration
+    Import-DscResource -ModuleName cRemoteFile
 
 
     node ($AllNodes.Where{$_.Role -eq 'IIS'}.NodeName )
@@ -40,6 +41,28 @@
 
         foreach ($WebSite in $Node.WebSites)
         {
+            File "$($Website.Name)-WebContentDownload"
+            {
+                Ensure = 'Present'
+                Type = 'Directory'
+                DestinationPath = $WebSite.PhysicalPath
+                Force = $true
+                DependsOn = '[WindowsFeature]Web-Server'
+            }
+        }
+
+        foreach ($WebSite in $Node.WebSites)
+        {
+            cRemoteFile "$($Website.Name)-FileDownload"
+            {
+                DestinationPath = $WebSite.PhysicalPath
+                Uri = $WebSite.SourceFile
+                DependsOn = '[WindowsFeature]Web-Server'
+            }
+        }
+
+        foreach ($WebSite in $Node.WebSites)
+        {
             xWebsite $WebSite.Name
             {
                 Ensure = 'Present'
@@ -53,9 +76,11 @@
                         Hostname              = $Website.BindingInfo.HostName
                     }
                 )
+                DependsOn = "[File]$($Website.Name)-WebContentDownload"
             }
         }
-         
+
+        
 
    }
 }

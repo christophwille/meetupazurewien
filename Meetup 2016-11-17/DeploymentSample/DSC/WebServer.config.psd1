@@ -7,19 +7,39 @@ $config = @{
   }
     @{  
         NodeName = 'lufthansa'
-        DomainName = '2und40.at'
-        RetryCount = 10
-        RetryIntervalSec = 30
         Role= @('IIS')
 
         WebSites = @(
             @{
-                Name = 'LuftHansa'
-                PhysicalPath = 'C:\inetpub\wwwroot'
+                Name = 'LuftHansa1'
+                PhysicalPath = 'C:\inetpub\Lufthansa1'
+                SourceFile = ''
                 BindingInfo = @{
                     Protocol              = 'http'
                     Port                  = '80'
-                    HostName              = 'lufthansa.2und40.at'
+                    HostName              = 'lufthansa1.2und40.at'
+                    IPAddress             = '*'
+                }
+            },
+            @{
+                Name = 'LuftHansa2'
+                PhysicalPath = 'C:\inetpub\Lufthansa2'
+                SourceFile = ''
+                BindingInfo = @{
+                    Protocol              = 'http'
+                    Port                  = '80'
+                    HostName              = 'lufthansa2.2und40.at'
+                    IPAddress             = '*'
+                }
+            },
+            @{
+                Name = 'LuftHansa3'
+                PhysicalPath = 'C:\inetpub\Lufthansa3'
+                SourceFile = ''
+                BindingInfo = @{
+                    Protocol              = 'http'
+                    Port                  = '80'
+                    HostName              = 'lufthansa3.2und40.at'
                     IPAddress             = '*'
                 }
             }
