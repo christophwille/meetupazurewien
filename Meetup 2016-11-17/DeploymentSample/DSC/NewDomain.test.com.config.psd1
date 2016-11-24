@@ -6,7 +6,7 @@
         PSDscAllowDomainUser = $True;
     }
     @{  
-        NodeName = 'cwtestdc0' ;
+        NodeName = 'testcom' ;
         DomainName = 'test.com';
         RetryCount = 10;
         RetryIntervalSec = 30;
@@ -28,6 +28,15 @@
                         AddressFamily = 'IPv4';
                         IPStartRange = '10.10.11.20';
                         IPEndRange = '10.10.11.50';
+                        SubnetMask = '255.255.255.0';
+                        LeaseDuration = '00:08:00';
+                    },
+                    @{
+                        Name = 'Internal2';
+                        State = 'Active';
+                        AddressFamily = 'IPv4';
+                        IPStartRange = '10.10.112.20';
+                        IPEndRange = '10.10.112.50';
                         SubnetMask = '255.255.255.0';
                         LeaseDuration = '00:08:00';
                     }

@@ -6,7 +6,7 @@
     PSDscAllowDomainUser = $true
   }
     @{  
-        NodeName = 'FirstDOmainController'
+        NodeName = '2und40at'
         DomainName = '2und40.at'
         RetryCount = 10
         RetryIntervalSec = 30
@@ -27,6 +27,15 @@
                         AddressFamily = 'IPv4'
                         IPStartRange = '10.10.11.20'
                         IPEndRange = '10.10.11.50'
+                        SubnetMask = '255.255.255.0'
+                        LeaseDuration = '00:08:00'
+                    },
+                    @{
+                        Name = 'Internal2'
+                        State = 'Active'
+                        AddressFamily = 'IPv4'
+                        IPStartRange = '10.10.12.20'
+                        IPEndRange = '10.10.12.50'
                         SubnetMask = '255.255.255.0'
                         LeaseDuration = '00:08:00'
                     }

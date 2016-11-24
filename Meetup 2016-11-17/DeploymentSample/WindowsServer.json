@@ -434,6 +434,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(parameters('vmNamePrefix'),copyindex(),'/Microsoft.Powershell.DSC')]",
+            "displayName" :  "Powershell-DSC-Extension",
             "apiVersion": "2015-06-15",
             "tags": {
                 "type": "[parameters('TagType')]",
