@@ -1,16 +1,11 @@
 ﻿configuration WebServer
 {
-
+    Import-DscResource –ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName xWebAdministration
 
 
     node ($AllNodes.Where{$_.Role -eq 'IIS'}.NodeName )
     {
-        LocalConfigurationManager
-        {
-            ConfigurationMode = 'ApplyAndAutoCorrect'
-            RebootNodeIfNeeded = $true
-        }
 
         WindowsFeature Web-Server                     { Ensure = 'Present';Name = 'Web-Server' }
         WindowsFeature Web-Mgmt-Tools                 { Ensure = 'Present';Name = 'Web-Mgmt-Tools' }
