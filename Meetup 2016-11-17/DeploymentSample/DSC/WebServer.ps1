@@ -50,7 +50,14 @@
                 Ensure = 'Present'
                 Name = $WebSite.Name
                 PhysicalPath = $WebSite.PhysicalPath
-                BindingInfo = $WebSite.BindingInfo
+                BindingInfo = @(MSFT_xWebBindingInformation
+                    {
+                        Protocol              = $Website.BindingInfo.Protocol
+                        Port                  = $Website.BindingInfo.Port
+                        IPAddress             = $Website.BindingInfo.IPAddress
+                        Hostname              = $Website.BindingInfo.HostName
+                    }
+                )
             }
         }
          
