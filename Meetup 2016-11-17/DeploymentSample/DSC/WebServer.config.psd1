@@ -13,7 +13,7 @@ $config = @{
             @{
                 Name = 'LuftHansa1'
                 PhysicalPath = 'C:\inetpub\Lufthansa1'
-                SourceFile = ''
+                SourceFile = 'https://github.com/chwilfing/meetupazurewien/raw/master/Meetup%202016-11-17/DeploymentSample/DSC/iisstart.zip'
                 BindingInfo = @{
                     Protocol              = 'http'
                     Port                  = '80'
@@ -24,7 +24,7 @@ $config = @{
             @{
                 Name = 'LuftHansa2'
                 PhysicalPath = 'C:\inetpub\Lufthansa2'
-                SourceFile = ''
+                SourceFile = 'https://github.com/chwilfing/meetupazurewien/raw/master/Meetup%202016-11-17/DeploymentSample/DSC/iisstart.zip'
                 BindingInfo = @{
                     Protocol              = 'http'
                     Port                  = '80'
@@ -35,7 +35,7 @@ $config = @{
             @{
                 Name = 'LuftHansa3'
                 PhysicalPath = 'C:\inetpub\Lufthansa3'
-                SourceFile = ''
+                SourceFile = 'https://github.com/chwilfing/meetupazurewien/raw/master/Meetup%202016-11-17/DeploymentSample/DSC/iisstart.zip'
                 BindingInfo = @{
                     Protocol              = 'http'
                     Port                  = '80'
