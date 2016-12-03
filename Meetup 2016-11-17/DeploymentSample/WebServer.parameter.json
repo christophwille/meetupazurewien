@@ -13,6 +13,9 @@
                 "secretName": "VMAdminPassword"
             }
         },
+        "numberOfInstances": {
+            "value": 2
+        },
         "registrationKey": {
             "reference": {
                 "keyVault": {

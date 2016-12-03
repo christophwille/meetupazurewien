@@ -42,6 +42,17 @@ $config = @{
                     HostName              = 'lufthansa3.2und40.at'
                     IPAddress             = '*'
                 }
+            },
+            @{
+                Name = 'NewWebSite'
+                PhysicalPath = 'C:\inetpub\NewWebsite'
+                SourceFile = 'https://github.com/chwilfing/meetupazurewien/raw/master/Meetup%202016-11-17/DeploymentSample/DSC/iisstart.zip'
+                BindingInfo = @{
+                    Protocol              = 'http'
+                    Port                  = '80'
+                    HostName              = 'NewWebsite.2und40.at'
+                    IPAddress             = '*'
+                }
             }
         )
     }
