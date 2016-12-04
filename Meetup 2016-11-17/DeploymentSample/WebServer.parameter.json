@@ -1,0 +1,49 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "VMAdminPassword"
+        },
+        "adminPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/611d371e-a166-4762-99a1-fa42e3e47040/resourceGroups/CWAutomation01/providers/Microsoft.KeyVault/vaults/CWKeyVault01"
+                },
+                "secretName": "VMAdminPassword"
+            }
+        },
+        "numberOfInstances": {
+            "value": 2
+        },
+        "registrationKey": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/611d371e-a166-4762-99a1-fa42e3e47040/resourceGroups/CWAutomation01/providers/Microsoft.KeyVault/vaults/CWKeyVault01"
+                },
+                "secretName": "VMDSCRegistrationKey"
+            }
+        },
+        "vmNamePrefix": {
+            "value": "CWMeetUp"
+        },
+        "nodeConfigurationName": {
+            "value": "WebServer.lufthansa"
+        },
+        "timestamp": {
+            "value": "asdf"
+        },
+        "StorageAccountname": {
+            "value": "cwmeetup01"
+        },
+        "modulesUrl": {
+            "value": "https://raw.githubusercontent.com/chwilfing/meetupazurewien/master/Meetup%202016-11-17/DeploymentSample/DSC/UpdateLCMforAAPull.zip"
+        },
+        "TagType": {
+            "value": "TEST"
+        },
+        "TagOwner": {
+            "value": "CW"
+        }
+    }
+}
