@@ -1,0 +1,15 @@
+http://aka.ms/GettingStartedWithARM
+
+https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/
+
+https://github.com/azuredk/azure-arm-hol
+
+https://github.com/Azure/azure-quickstart-templates
+
+https://github.com/mspnp/template-building-blocks
+
+https://github.com/msshli/arm-visualizer (bzw http://armviz.io/designer)
+
+https://resources.azure.com/
+
+https://channel9.msdn.com/Blogs/AzureRM-Management-from-any-Platform
