@@ -5,6 +5,7 @@ Unter dem Motto "In der Kürze liegt die Würze" zeigen wir die wichtigsten Neui
 
  Allgemeine Linklisten
 
+  * [Azure Weekly Newsletter Issue #124](http://campaigns.endjin.com/t/ViewEmailArchive/t/878369FA467039CB/C67FD2F38AC4859C/)
   * [BUILD 2017 Conference Rollup for .NET Developers](https://www.hanselman.com/blog/BUILD2017ConferenceRollupForNETDevelopers.aspx)
   * [The week in .NET – Microsoft Build 2017, .NET Core 2.0 preview 1, For the King](https://blogs.msdn.microsoft.com/dotnet/2017/05/16/the-week-in-net-microsoft-build-2017-net-core-2-0-preview-1-for-the-king/)
   * [All the Build 2017 data related sessions in 1 spot, SQL Server, CosmosDB, Azure SQL DB and more ](https://sqlservercode.blogspot.co.at/2017/05/all-build-2017-data-related-sessions-in.html)
