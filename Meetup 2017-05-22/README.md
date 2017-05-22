@@ -23,6 +23,20 @@ Unter dem Motto "In der Kürze liegt die Würze" zeigen wir die wichtigsten Neui
 
 ## Christian Nagel
 
+* [.NET STandard 2.0 and .NET Core 2.0 - Channel 9 Live](https://channel9.msdn.com/Events/Build/2017/C9L18)
+* [Three Runtimes, one standard... .NET Standard: All in Visual Studio 2017 - Breakout Session](https://channel9.msdn.com/Events/Build/2017/B8001)
+* [Support for ASP.NET Core: What is an LTS?](https://channel9.msdn.com/Events/Build/2017/T6072)
+* [Introducing ASP.NET Core 2.0 - Breakout Session](https://channel9.msdn.com/Events/Build/2017/B8048)
+* [SignalR in .NET Core: Realtime cross-platform open web communication](https://channel9.msdn.com/Events/Build/2017/B8078)
+* [Entity Framework Core 2.0: data, mobile, server, IoT, and more](https://channel9.msdn.com/Events/Build/2017/B8050)
+* [Download and install .NET Core 2.0 preview](https://www.microsoft.com/net/core/preview)
+* [.NET Core Roadmap](https://github.com/dotnet/core/blob/master/roadmap.md)
+* [ASP.NET Core 2.0.0 Preview 1 Release Notes](https://github.com/aspnet/Home/releases/tag/2.0.0-preview1)
+* [Entity Framework Core 2.0.0 Preview 1 Release Notes](https://github.com/aspnet/EntityFramework/releases/tag/rel/2.0.0-preview1)
+* [Entity Framework Core Roadmap](https://github.com/aspnet/EntityFramework/wiki/Roadmap)
+* [Professional C# - Code Samples (Upcoming for .NET Core 2.0)](https://github.com/ProfessionalCSharp)
+* [csharp.christiannagel.com - .NET Core Articles](https://csharp.christiannagel.com)
+
 ## Toni Pohl
 
 ## Andreas Pollak - CosmosDB
