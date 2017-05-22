@@ -46,6 +46,21 @@ Unter dem Motto "In der Kürze liegt die Würze" zeigen wir die wichtigsten Neui
 ## Hannes Preishuber
 
 ## Christoph Wilfing
+Christoph Wilfing | christoph.wilfing@atwork.at
+
+### Azure Mobile App
+[Azure App | Android Store](https://play.google.com/store/apps/details?id=com.microsoft.azure)
+
+### Azure Cloud Shell
+[Cloud Shell OverView](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)
+
+[Cloud Shell PowerShell Preview](http://aka.ms/PSCloudSignup)
+
+[Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+[Azure Cli Reference](https://docs.microsoft.com/en-us/cli/azure/)
+
+[Linux Cloud Shell](https://www.hanselman.com/blog/ExploringThePreconfiguredBrowserbasedLinuxCloudShellBuiltIntoTheAzurePortal.aspx)
 
 ## Christoph Wille
 
