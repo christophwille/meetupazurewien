@@ -59,6 +59,8 @@ Unter dem Motto "In der Kürze liegt die Würze" zeigen wir die wichtigsten Neui
 
 ## Hannes Preishuber
 
+https://studios.ppedv.de/lerne/2017%7cTrainer%7cMicrosoft-Azure-functions-Visual-Studio-cloud-tools-dotnet-framework-runtime-queue-trigger-binding-facelocator-storage-explorer-serverless-HannesPreishuber 20 Minuten Recording zur Demo
+
 ## Christoph Wilfing
 Christoph Wilfing | christoph.wilfing@atwork.at
 
