@@ -29,6 +29,7 @@ your Macs and PCs (curiosity too)! If you don't happen to have an Azure subscrip
 * [Team Blog](https://blogs.msdn.microsoft.com/appserviceteam/)
 * [Documentation](https://docs.microsoft.com/en-us/azure/azure-functions/)
 * [Samples and Demos](https://github.com/Azure/Azure-Functions/wiki/Samples-and-content)
+* [Docs: Microsoft Graph bindings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-microsoft-graph)
 
 
 ## Samples, Demos, Articles
