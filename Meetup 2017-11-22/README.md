@@ -12,12 +12,21 @@ we'll dive into a coding session (a basic understanding of Azure Functions is as
 your Macs and PCs (curiosity too)! If you don't happen to have an Azure subscription, please go to 
 [http://azure.com/free/](http://azure.com/free/) and sign up for an entirely free subscription.
 
+## Videos
+
+* [A day in the life of an Azure serverless developer](https://www.youtube.com/watch?v=jdiKoWdrIn4)
+* [Modern API development in a serverless world with Azure Functions](https://www.youtube.com/watch?v=uXTUTKyaTv4)
+* [Modern business processes with Microsoft Graph and Azure Functions ](https://www.youtube.com/watch?v=Y3cC0Hpemmk)
+* [Navigating the Microsoft Graph with Azure Functions](https://channel9.msdn.com/Shows/Azure-Friday/Navigating-the-Microsoft-Graph-with-Azure-Functions)
+* [Serverless Apps with Azure Cosmos DB and Azure Functions](https://channel9.msdn.com/Shows/Azure-Friday/Severless-Apps-with-Azure-Cosmos-DB-and-Azure-Functions)
+* [Azure Event Grid: Powering serverless through eventing](https://www.youtube.com/watch?v=SaOWhPTjHn0)
 
 ## Azure Functions Official Links
 
 * [Twitter](https://twitter.com/azurefunctions)
 * [GitHub Landing Page](https://github.com/Azure/Azure-Functions) lots of useful links
 * [YouTube Channel](https://youtube.com/AzureFunctions )
+* [Team Blog](https://blogs.msdn.microsoft.com/appserviceteam/)
 * [Documentation](https://docs.microsoft.com/en-us/azure/azure-functions/)
 * [Samples and Demos](https://github.com/Azure/Azure-Functions/wiki/Samples-and-content)
 
@@ -35,3 +44,7 @@ your Macs and PCs (curiosity too)! If you don't happen to have an Azure subscrip
 
 * [Azure Functions for Visual Studio Code](https://github.com/Microsoft/vscode-azurefunctions)
 * [RequestBin](https://requestb.in/) inspect HTTP requests
+* [httpbin](https://httpbin.org/) HTTP Request and Response 
+* [ngrok](https://ngrok.com/) for tunneling to localhost (WebHooks scenario)
+* [Postman](https://www.getpostman.com/)
+* [REST Client for VS Code](http://josephwoodward.co.uk/2017/10/rest-%20client-for-vs-Code-an-elegant-alternative-postman)
