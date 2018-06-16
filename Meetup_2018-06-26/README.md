@@ -39,5 +39,6 @@ via [https://twitter.com/WilleChristoph](https://twitter.com/WilleChristoph).
 * [Azure Code Samples - Event Grid](https://azure.microsoft.com/en-us/resources/samples/?sort=0&service=event-grid)
 * [EventGrid/Azure Function demo](https://www.codeproject.com/Articles/1220389/Azure-EventGrid-Azure-Function-demo)
 * [Azure Event Grid Viewer with ASP.NET Core and SignalR](https://madeofstrings.com/2018/03/14/azure-event-grid-viewer-with-asp-net-core-and-signalr/)
+* [Serverless Ninjas Workshop](https://github.com/codingwithsasquatch/serverless_ninjas_workshop)
 * [Event-Grid-Glue](https://github.com/JeremyLikness/Event-Grid-Glue), article [Glue for the Internet](https://blog.jeremylikness.com/azure-event-grid-glue-for-the-internet-e770d94cc29)
-* [Azure Event Grid extension for VS Code](https://github.com/Microsoft/vscode-azureeventgrid)
+* [Azure Event Grid extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureeventgrid)
