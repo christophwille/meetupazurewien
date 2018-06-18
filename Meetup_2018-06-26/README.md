@@ -26,13 +26,14 @@ via [https://twitter.com/WilleChristoph](https://twitter.com/WilleChristoph).
 
 ## Generic Articles and Videos
 
-* [What's new for Serverless Computing in Azure](https://channel9.msdn.com/Events/Build/2018/BRK2137)
 * [Connect Anything to Everything: Serverless Routing and Messaging with Event Grid](https://channel9.msdn.com/Events/Build/2018/THR3509)
-* [Be an integration superhero with Azure and build API-enabled and connected enterprises](https://channel9.msdn.com/Events/Build/2018/BRK2113)
-* [Article: Event-Driven Architecture in the Cloud with Azure Event Grid](https://msdn.microsoft.com/en-us/magazine/mt829271) with [code repo](https://github.com/dbarkol/AzureEventGrid)
 * [On .NET: Cloud scale events with Azure Event Grid](https://channel9.msdn.com/Shows/On-NET/Cloud-scale-events-with-Azure-Event-Grid)
 * [Azure Event Grid: Powering serverless through eventing](https://www.youtube.com/watch?v=SaOWhPTjHn0) (Ignite conference) also check out [Events, Data points and Messages](https://www.youtube.com/watch?v=ITrlLErsqzY) by Clemens Vasters
+* [What's new for Serverless Computing in Azure](https://channel9.msdn.com/Events/Build/2018/BRK2137)
+* [Be an integration superhero with Azure and build API-enabled and connected enterprises](https://channel9.msdn.com/Events/Build/2018/BRK2113)
+* [Article: Event-Driven Architecture in the Cloud with Azure Event Grid](https://msdn.microsoft.com/en-us/magazine/mt829271) with [code repo](https://github.com/dbarkol/AzureEventGrid)
 * [Article: An Introduction to Azure Event Grid](https://www.red-gate.com/simple-talk/cloud/cloud-development/introduction-azure-event-grid/)
+* [Article: Combine Azure scheduled events with Event Grid](https://regularitguy.com/2018/05/29/how-to-combine-azure-scheduled-events-with-event-grid/)
 
 ## Sample Code
 
